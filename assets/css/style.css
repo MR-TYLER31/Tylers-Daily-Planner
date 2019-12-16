@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    border-bottom: 5px solid black;
+}
+
+#main {
+width: 60%;
+margin: 30px auto;
+}
+
+.time {
+    border-right: 1px solid black;
+}
+
+.input-group-text {
+    width: 80px;
+}
+
+.task {
+    width: 80%;
+    height: 50px;
+}
+
+.save-button {
+    margin-left: -5px;
+    background-color: slateblue;
+    color: white;
+    height: 50px;
+}
