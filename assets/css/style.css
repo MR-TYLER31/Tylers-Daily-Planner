@@ -34,14 +34,12 @@ body {
     white-space: pre-wrap;
     height: 80px;
     border-top: 1px solid white;;
-
   }
   
   .hour {
     background-color: #ffffff;
     color: red;
     border-top: 1px dashed #000000;
-    border-right: 1px solid black;
   }
   
   .past {
@@ -65,6 +63,7 @@ body {
     border-bottom-right-radius: 15px;
     background-color: #06AED5;
     color: white;
+    margin-left: -15px;
     height: 80px;
     width: 80px;
   }
