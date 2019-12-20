@@ -10,15 +10,15 @@ console.log(currentHour)
 // Create array of objects to hold the values for each our of the day
 // milTime is the time in milatary time because moment.js displays military time
 var timeValues = [
-  {time: "9AM", milTime: 09},
-  {time: "10AM", milTime: 10},
-  {time: "11AM", milTime: 11},
-  {time: "12AM", milTime: 12},
-  {time: "1PM", milTime: 13},
-  {time: "2PM", milTime: 14},
-  {time: "3AM", milTime: 15},
-  {time: "4PM", milTime: 16},
-  {time: "5PM", milTime: 17}
+  {time: "9 AM", milTime: 09},
+  {time: "10 AM", milTime: 10},
+  {time: "11 AM", milTime: 11},
+  {time: "12 AM", milTime: 12},
+  {time: "1 PM", milTime: 13},
+  {time: "2 PM", milTime: 14},
+  {time: "3 PM", milTime: 15},
+  {time: "4 PM", milTime: 16},
+  {time: "5 PM", milTime: 17}
 ]
 
 // create a for loop to that iterates through the time values array and dynamically make a row for each hour.
@@ -37,8 +37,8 @@ for(var i = 0; i < timeValues.length; i++) {
 
   // add classes to the created elements
   timeRow.addClass('row');
-  hourDiv.addClass('col-md-1'); 
-  hourDiv.html(`<p>${timeValues[i].time}</p>`) // Displays the hour
+  hourDiv.addClass('time col-md-1'); 
+  hourDiv.html(`<p class="hour-text">${timeValues[i].time}</p>`) // Displays the hour
   textDiv.addClass('col-md-10');
   textDiv.attr('value', timeValues[i].milTime); // holds the time value in milary time because moment.js is military time
   buttonDiv.addClass('col-md-1');

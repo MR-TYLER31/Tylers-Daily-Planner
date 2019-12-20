@@ -9,8 +9,9 @@ body {
     border: none;
     resize: none;
     color: #000000;
-    border-left: 1px solid black;
+    /* border-left: 1px solid black; */
     padding: 10px;
+    width: 100%;
   }
   
   .jumbotron {
@@ -33,13 +34,12 @@ body {
   .row {
     white-space: pre-wrap;
     height: 80px;
-    border-top: 1px solid white;;
   }
   
-  .hour {
-    background-color: #ffffff;
-    color: red;
-    border-top: 1px dashed #000000;
+  .hour-text {
+    color: black;
+    text-align: center;
+    padding-top: 30px;
   }
   
   .past {
@@ -55,6 +55,15 @@ body {
   .future {
     background-color: #77dd77;
     color: white;
+  }
+
+  .time{
+    background-color: plum;
+    border: 2px solid white;
+  }
+
+  .col-md-10 {
+    border: solid 2px white;
   }
   
   .saveBtn {
