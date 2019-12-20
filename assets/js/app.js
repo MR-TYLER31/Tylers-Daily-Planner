@@ -5,7 +5,7 @@ $(document).ready(function() {
   var date = moment().format('dddd, MMMM Do YYYY')
   $('#current-date').text(date);
  var currentHour = parseInt(moment().format('H'))
-console.log(currenthour)
+console.log(currentHour)
 
 // Create array of objects to hold the values for each our of the day
 var timeValues = [
@@ -20,14 +20,22 @@ var timeValues = [
   {time: "5PM"}
 ]
 
-// create a for loop to that iterates through the time values array and make a row for each hour.
+// create a for loop to that iterates through the time values array and dynamically make a row for each hour.
 for(var i = 0; i < timeValues.length; i++) {
   var timeRow = $('<div>');
   var hourDiv = $('<div>');
   var textDiv = $('<div>');
-  var textAreaDiv = $('<textarea');
+  var textAreaDiv = $('<textarea>');
   var buttonDiv = $('<div>');
   var saveButton = $('<button>');
+
+  // add classes to the created elements
+  timeRow.addClass('row');
+  hourDiv.addClass('col-md-1');
+  hourDiv.text(`<p>${timeValues[i].time}</p>`)
+
 }
+
+
 
 });
