@@ -23,10 +23,15 @@ var timeValues = [
 // create a for loop to that iterates through the time values array and dynamically make a row for each hour.
 for(var i = 0; i < timeValues.length; i++) {
   var timeRow = $('<div>');
+  // create div to hold the hour content
   var hourDiv = $('<div>');
+  // create div to hold the textarea content
   var textDiv = $('<div>');
+  // create textarea element to type in task
   var textAreaDiv = $('<textarea>');
+   // create div to hold the button
   var buttonDiv = $('<div>');
+  // create the button to save for local storage
   var saveButton = $('<button>');
 
   // add classes to the created elements
