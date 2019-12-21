@@ -4,11 +4,12 @@ $(document).ready(function() {
   var containerDiv = $('.container');
   var date = moment().format('dddd, MMMM Do YYYY')
   $('#current-date').text(date);
+  // set the current hour in military time
  var currentHour = parseInt(moment().format('H'))
 console.log(currentHour)
 
 // Create array of objects to hold the values for each our of the day
-// milTime is the time in milatary time because moment.js displays military time
+// milTime is military time 
 var timeValues = [
   {time: "9 AM", milTime: 09},
   {time: "10 AM", milTime: 10},
@@ -21,8 +22,11 @@ var timeValues = [
   {time: "5 PM", milTime: 17}
 ]
 
+// localStorage.getItem(key, value)
+
 // create a for loop to that iterates through the time values array and dynamically make a row for each hour.
 for(var i = 0; i < timeValues.length; i++) {
+  
   var timeRow = $('<div>');
   // create div to hold the hour content
   var hourDiv = $('<div>');
@@ -47,17 +51,22 @@ for(var i = 0; i < timeValues.length; i++) {
 
   // append the row to the container div
   containerDiv.append(timeRow);
-  // append the time, textareaDiv and button div to th row
+  // append the time, textareaDiv and buttonDiv to the parent row row
   timeRow.append(hourDiv, textDiv, buttonDiv);
   // append the textarea element to the textareaDiv
   textDiv.append(textArea);
   // apppend the saveButton to the buttonDiv
   buttonDiv.append(saveButton);
+
+
+  // localStorage.getItem(key, value)
+
 }
+
+
 
 // Loop through the textarea rows and change the color according to the current hour of the day
 function colorDiv() {
-  // 
   var rowColor = $(".col-md-10");
   for (let j = 0; j < rowColor.length; j++) {
     var currentDiv = $(rowColor[j]);
@@ -72,6 +81,17 @@ function colorDiv() {
 }
 // Call the colorDiv function
 colorDiv();
+
+
+// Event listener to save the task when clicked
+$('.saveBtn').on('click', function() {
+  var key = $(this).parent().parent().find('textarea').val()
+  var value = $(this).parent().parent().find('.col-md-10').attr('value');
+
+  
+  localStorage.setItem(key, value)
+})
+
 
 
 
