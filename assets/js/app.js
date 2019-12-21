@@ -8,7 +8,7 @@ $(document).ready(function() {
  var currentHour = parseInt(moment().format('H'))
 console.log(currentHour)
 
-// Create array of objects to hold the values for each our of the day
+// Create array of objects to hold the values for each hour of the day
 // milTime is military time 
 var timeValues = [
   {time: "9 AM", milTime: 09},
@@ -22,11 +22,10 @@ var timeValues = [
   {time: "5 PM", milTime: 17}
 ]
 
-// localStorage.getItem(key, value)
-
 // create a for loop to that iterates through the time values array and dynamically make a row for each hour.
 for(var i = 0; i < timeValues.length; i++) {
   
+  var savedText = localStorage.getItem(i) || "";
   var timeRow = $('<div>');
   // create div to hold the hour content
   var hourDiv = $('<div>');
@@ -38,13 +37,15 @@ for(var i = 0; i < timeValues.length; i++) {
   var buttonDiv = $('<div>');
   // create the button to save for local storage
   var saveButton = $('<button>');
+  
 
   // add classes to the created elements
   timeRow.addClass('row');
   hourDiv.addClass('time col-md-1'); 
   hourDiv.html(`<p class="hour-text">${timeValues[i].time}</p>`) // Displays the hour
   textDiv.addClass('col-md-10');
-  textDiv.attr('value', timeValues[i].milTime); // holds the time value in milary time because moment.js is military time
+  textDiv.attr('value', timeValues[i].milTime); // holds the time value in milary time
+  textArea.text(savedText);
   buttonDiv.addClass('col-md-1');
   saveButton.addClass('saveBtn');
   saveButton.html(`<i class="fas fa-lock"></i>`)
@@ -59,14 +60,16 @@ for(var i = 0; i < timeValues.length; i++) {
   buttonDiv.append(saveButton);
 
 
-  // localStorage.getItem(key, value)
-
+  // after the loop runs this checks if there is value in the text area and displays text content if there is value
+ if (localStorage.getItem(timeValues[i].milTime)) {
+  textArea.text(localStorage.getItem(timeValues[i].milTime));
+}
 }
 
-
+ 
 
 // Loop through the textarea rows and change the color according to the current hour of the day
-function colorDiv() {
+function changeColor() {
   var rowColor = $(".col-md-10");
   for (let j = 0; j < rowColor.length; j++) {
     var currentDiv = $(rowColor[j]);
@@ -79,20 +82,20 @@ function colorDiv() {
     }
   }
 }
-// Call the colorDiv function
-colorDiv();
+// Call the changeColor function
+changeColor();
 
 
-// Event listener to save the task when clicked
+// Event listener to save the task when button is clicked
 $('.saveBtn').on('click', function() {
-  var key = $(this).parent().parent().find('textarea').val()
-  var value = $(this).parent().parent().find('.col-md-10').attr('value');
+  // this will find the textarea value that the user inputs
+  var textValue = $(this).parent().parent().find('textarea').val()
+  // this will find the current time for that textarea div
+  var divValue = $(this).parent().parent().find('.col-md-10').attr('value');
 
-  
-  localStorage.setItem(key, value)
+  // sets the input and time as keys and values
+  localStorage.setItem(divValue, textValue)
 })
-
-
 
 
 });
